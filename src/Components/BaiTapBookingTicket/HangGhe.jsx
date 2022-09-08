@@ -21,7 +21,7 @@ class HangGhe extends Component {
 
             return <button
                 onClick={() => {
-                    alert(1)
+                    this.props.datGhe(ghe)
                 }} 
                 className={`ghe ${cssGheDaDat} ${cssGheDangChon}`}
                 key={index}
@@ -67,4 +67,15 @@ const mapStateToProps = (rootReducers) => {
     }
 }
 
-export default connect(mapStateToProps)(HangGhe)
+const mapDispatchToProps = (dispatch) => {
+    return {
+        datGhe: (ghe) => {
+            dispatch({
+                type: 'DAT_GHE',
+                ghe
+            })
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(HangGhe)
